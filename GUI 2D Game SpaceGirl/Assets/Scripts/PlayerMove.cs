@@ -8,20 +8,17 @@ using System.Collections;
 public class PlayerMove : MonoBehaviour
 {
 	// change speed
-	public float speed = 10;
+	public float spd = 10;
 
 	// cached reference to a physics RigidBody
-	private Rigidbody2D rigidBody2D;
+	private Rigidbody2D rd2D;
 
-	//--------------------------
-	// get reference tot the RigidBody 2D compoonent
-	// that is in the parent GameObject to which an instance of this script has been added
+	//Initialize by obtain the current scripts attached object's Rigidbody2D
 	void Awake()
 	{
-		rigidBody2D = GetComponent<Rigidbody2D>();
+		rd2D = GetComponent<Rigidbody2D>();
 	}
 
-	//---------------------------
 	void FixedUpdate()
 	{
 		// read from movement keys
@@ -30,14 +27,14 @@ public class PlayerMove : MonoBehaviour
 		float xMove = Input.GetAxis("Horizontal");
 		float yMove = Input.GetAxis("Vertical");
 
-		// mutliple by speed factor
-		float xSpeed = xMove * speed;
-		float ySpeed = yMove * speed;
+		// multiply by spd
+		float xSpeed = xMove * spd;
+		float ySpeed = yMove * spd;
 
 		// create (dx,dy) vector object
 		Vector2 newVelocity = new Vector2(xSpeed, ySpeed);
 
 		// set the velocity of the Physicsl rigid body to this (x,y) vector
-		rigidBody2D.velocity = newVelocity;
+		rd2D.velocity = newVelocity;
 	}
 }
