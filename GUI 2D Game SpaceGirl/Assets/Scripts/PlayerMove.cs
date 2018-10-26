@@ -13,7 +13,10 @@ public class PlayerMove : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
+        //detects directional for LEFT and RIGHT arrow key input
         float xMove = Input.GetAxis("Horizontal");
+
+        //detects directional for UP and DOWN arrow key input
         float yMove = Input.GetAxis("Vertical");
 
         float xSpeed = xMove * speed;
